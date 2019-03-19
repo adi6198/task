@@ -23,6 +23,7 @@ router.route('/issues').get((req, res) => {
         if (err)
             console.log(err);
         else
+            console.log("Hello");
             res.json(issues);
     });
 });
@@ -87,9 +88,8 @@ router.route('/issues/delete/:id').delete((req, res) => {
     });
 });
 
-
 app.use('/', router);
 
-app.listen(4000, () => console.log(`Express server running on port 4000`));
+app.listen(4001, () => console.log(`Express server running on port 4001`));
 
 
