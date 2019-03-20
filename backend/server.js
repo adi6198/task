@@ -6,9 +6,13 @@ const mongoose = require('mongoose');
 const app = express();
 const router = express.Router();
 const Issue = require('./models/Issue');
+const googleApi = require('./routes/google');
+const regUserApi = require('./routes/regUserApi');
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use('/user', googleApi);
+app.use('/regUser', regUserApi);
 
 mongoose.connect('mongodb://localhost:27017/issues');
 
@@ -90,6 +94,6 @@ router.route('/issues/delete/:id').delete((req, res) => {
 
 app.use('/', router);
 
-app.listen(4001, () => console.log(`Express server running on port 4001`));
+app.listen(4000, () => console.log(`Express server running on port 4000`));
 
-
+module.exports=app;
